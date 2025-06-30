@@ -90,3 +90,127 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+# MCP Image to Base64 Server
+
+这是一个基于Model Context Protocol (MCP)的图片转Base64服务器，可以将本地图片文件或远程图片URL转换为Base64格式。
+
+## 功能特性
+
+- 🖼️ 支持本地图片文件转换
+- 🌐 支持远程图片URL转换
+- 📋 支持多种图片格式（PNG, JPEG, GIF, WebP, SVG等）
+- 🔗 使用stdio协议与MCP客户端通信
+- ⚡ 使用Sharp库进行高效图片处理
+
+## 安装和运行
+
+### 1. 安装依赖
+
+```bash
+npm install
+```
+
+### 2. 编译TypeScript代码
+
+```bash
+npm run build
+```
+
+### 3. 运行服务器
+
+```bash
+npm start
+```
+
+### 4. 运行测试
+
+```bash
+npm test
+```
+
+## 使用方法
+
+### 作为MCP Server使用
+
+这个服务器实现了MCP协议，可以通过MCP客户端使用。服务器提供一个工具：
+
+- **image_to_base64**: 将图片转换为Base64格式
+
+#### 工具参数
+
+```json
+{
+  "image_path": "图片路径或URL"
+}
+```
+
+#### 示例
+
+```javascript
+// 通过MCP客户端调用
+const result = await client.request({
+  method: "tools/call",
+  params: {
+    name: "image_to_base64",
+    arguments: {
+      image_path: "/path/to/image.jpg"  // 或 "https://example.com/image.jpg"
+    }
+  }
+});
+```
+
+### 配置MCP客户端
+
+如果你使用支持MCP的客户端（如Cursor），可以在mcpservers.json中添加：
+
+```json
+{
+  "mcpServers": {
+    "image-to-base64": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "cwd": "/path/to/this/project"
+    }
+  }
+}
+```
+
+## 项目结构
+
+```
+mcp-tools/
+├── src/
+│   ├── index.ts          # MCP服务器主文件
+│   └── test-client.ts    # 测试客户端
+├── dist/                 # 编译后的JavaScript文件
+├── package.json          # 项目配置
+├── tsconfig.json         # TypeScript配置
+└── README.md            # 说明文档
+```
+
+## 技术栈
+
+- **TypeScript**: 主要开发语言
+- **@modelcontextprotocol/sdk**: MCP协议SDK
+- **Sharp**: 高性能图片处理库
+- **Axios**: HTTP客户端用于远程图片下载
+- **Node.js**: 运行环境
+
+## 开发脚本
+
+- `npm run build`: 编译TypeScript代码
+- `npm start`: 启动MCP服务器
+- `npm run dev`: 编译并启动服务器
+- `npm test`: 运行测试客户端
+
+## 注意事项
+
+1. 服务器使用stdio协议运行，适合与MCP客户端集成
+2. 远程图片需要网络连接，请确保网络畅通
+3. 图片会被处理为JPEG格式以优化大小
+4. 支持的图片格式取决于Sharp库的支持
+
+## 许可证
+
+ISC License
