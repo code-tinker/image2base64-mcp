@@ -31,5 +31,5 @@ Add to your Cursor MCP configuration file:
 
 ### use case
 
-![image](./assets/image.png)
+![image](https://asset2.qieman.com/images/79f00fa3-c574-4c30-a01a-8b945f80b83c.png)
 

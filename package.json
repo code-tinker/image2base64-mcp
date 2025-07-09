@@ -1,6 +1,6 @@
 {
   "name": "@code-tinker/mcp-image-to-base64",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "MCP Server for image to base64 conversion - 图片转Base64的MCP服务器",
   "main": "dist/index.js",
   "bin": {
