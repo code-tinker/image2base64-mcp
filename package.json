@@ -1,18 +1,39 @@
 {
-  "name": "mcp-tools",
+  "name": "@code-tinker/mcp-image-to-base64",
   "version": "1.0.0",
-  "description": "MCP Server for image to base64 conversion",
+  "description": "MCP Server for image to base64 conversion - 图片转Base64的MCP服务器",
   "main": "dist/index.js",
+  "bin": {
+    "mcp-image-to-base64": "dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "tsc && node dist/index.js",
-    "test": "tsc && node dist/test-client.js"
+    "test": "tsc && node dist/test-client.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": ["mcp", "base64", "image", "server"],
-  "author": "",
+  "keywords": ["mcp", "base64", "image", "server", "model-context-protocol", "ai-tools"],
+  "author": "lzhongzh",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code-tinker/image2base64-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/code-tinker/image2base64-mcp/issues"
+  },
+  "homepage": "https://github.com/code-tinker/image2base64-mcp#readme",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "axios": "^1.6.0",
