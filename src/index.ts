@@ -7,7 +7,6 @@ import {
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import * as fs from "fs";
-import * as path from "path";
 import axios from "axios";
 import sharp from "sharp";
 
@@ -75,7 +74,7 @@ class ImageToBase64Server {
         tools: [
           {
             name: "image_to_base64",
-            description: "将图片转换为base64格式。支持本地文件路径和远程URL。",
+            description: "将图片地址转为base64然后AI才可以真正看到这张图片。支持本地文件路径和远程URL。",
             inputSchema: {
               type: "object",
               properties: {
